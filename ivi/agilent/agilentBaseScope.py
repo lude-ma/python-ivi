@@ -1153,7 +1153,7 @@ class agilentBaseScope(ivi.Driver, scope.Base, scope.TVTrigger,
     
     def _set_trigger_source(self, value):
         value = str(value)
-        if value not in self._channel_name:
+        if value not in self._channel_name and value != 'wgen':
             raise ivi.UnknownPhysicalNameException()
         if not self._driver_operation_simulate:
             self._write(":trigger:source %s" % value)
